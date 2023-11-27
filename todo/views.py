@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -12,13 +12,12 @@ class TaskListView(generic.ListView):
     template_name = "todo/task_list.html"
 
 
-
 class TagListView(generic.ListView):
     model = Tag
-    queryset = Task.objects.all()
-    paginate_by = 10
+    queryset = Tag.objects.all()
+    paginate_by = 5
     template_name = "todo/tag_list.html"
-
+    context_object_name = "tag_list"
 
 class TaskCreateView(generic.CreateView):
     model = Task
@@ -64,3 +63,11 @@ class TagDeleteView(generic.DeleteView):
     success_url = reverse_lazy("todo:tag-list")
     template_name = "todo/tag_confirm_delete.html"
     context_object_name = "tag_confirm_delete"
+
+
+class TaskToggleStatusView(generic.View):
+    def post(self, request, pk):
+        task = get_object_or_404(Task, pk=pk)
+        task.is_completed = not task.is_completed
+        task.save()
+        return redirect("todo:task-list")

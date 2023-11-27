@@ -5,6 +5,6 @@
   <form action="" method="post">
     {% csrf_token %}
    <input type="submit" value="Yes" class="btn btn-danger">
-    <button class="btn btn-secondary"><a href="{% url 'task_manager:task-type-list' %}" class="text-white">Cancel</a></button>
+    <button class="btn btn-secondary"><a href="{% url 'todo:task-list' %}" class="text-white">Cancel</a></button>
   </form>
 {% endblock %}

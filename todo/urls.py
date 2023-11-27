@@ -8,7 +8,7 @@ from todo.views import (
     TagListView,
     TagCreateView,
     TagUpdateView,
-    TagDeleteView
+    TagDeleteView, TaskToggleStatusView
 )
 
 urlpatterns = [
@@ -36,6 +36,7 @@ urlpatterns = [
         TagDeleteView.as_view(),
         name="tag-delete"
     ),
+    path('toggle-status/<int:pk>/', TaskToggleStatusView.as_view(), name='task_toggle_status'),
 ]
 
 app_name = "todo"
