@@ -8,14 +8,14 @@ from todo.models import Task, Tag
 class TaskListView(generic.ListView):
     model = Task
     queryset = Task.objects.all()
-    paginate_by = 10
+    paginate_by = 5
     template_name = "todo/task_list.html"
 
 
 class TagListView(generic.ListView):
     model = Tag
     queryset = Tag.objects.all()
-    paginate_by = 5
+    paginate_by = 10
     template_name = "todo/tag_list.html"
     context_object_name = "tag_list"
 
