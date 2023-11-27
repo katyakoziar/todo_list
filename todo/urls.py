@@ -8,7 +8,8 @@ from todo.views import (
     TagListView,
     TagCreateView,
     TagUpdateView,
-    TagDeleteView, TaskToggleStatusView
+    TagDeleteView,
+    TaskToggleStatusView
 )
 
 urlpatterns = [
