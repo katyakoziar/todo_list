@@ -11,17 +11,11 @@ class Tag(models.Model):
         return self.name
 
 
-class CustomBooleanField(models.BooleanField):
-    def __init__(self, *args, **kwargs):
-        kwargs['choices'] = [(True, 'Done'), (False, 'Not Done')]
-        super().__init__(*args, **kwargs)
-
-
 class Task(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     deadline = models.DateTimeField(null=True, blank=True)
-    is_completed = CustomBooleanField(default=False)
+    is_completed = models.BooleanField(default=False)
     tags = models.ManyToManyField(Tag, related_name="tasks")
 
     class Meta:
