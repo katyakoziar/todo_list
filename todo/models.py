@@ -19,7 +19,7 @@ class CustomBooleanField(models.BooleanField):
 
 class Task(models.Model):
     content = models.TextField()
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
     deadline = models.DateTimeField(null=True, blank=True)
     is_completed = CustomBooleanField(default=False)
     tags = models.ManyToManyField(Tag, related_name="tasks")
