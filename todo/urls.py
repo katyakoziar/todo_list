@@ -37,7 +37,7 @@ urlpatterns = [
         TagDeleteView.as_view(),
         name="tag-delete"
     ),
-    path('toggle-status/<int:pk>/', TaskToggleStatusView.as_view(), name='task_toggle_status'),
+    path("toggle-status/<int:pk>/", TaskToggleStatusView.as_view(), name="task_toggle_status"),
 ]
 
 app_name = "todo"
